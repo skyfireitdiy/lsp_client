@@ -1,0 +1,69 @@
+- RegularExpressionsClientCapabilities:
+  engine: string
+  version: ?string
+- Position:
+  line: int
+  character: int
+- Range:
+  start: Position
+  end: Position
+- TextDocument:
+  uri: string
+  languageId: string
+  version: int
+  text: string
+- TextDocumentIdentifier:
+  uri: string
+- VersionedTextDocumentIdentifier:
+  BASE: TextDocumentIdentifier
+  version: int
+- OptionalTextDocumentIdentifier:
+  BASE: TextDocumentIdentifier
+  version: int?
+- TextDocumentPositionParams:
+  textDocument: TextDocumentIdentifier
+  position: Position
+- DocumentFilter:
+  language: string?
+  scheme: string?
+  pattern: string?
+- TextEdit:
+  range: Range
+  newText: string
+- ChangeAnnotation:
+  label: string
+  needsConfirmation: bool?
+  description: string?
+- AnnotatedTextEdit:
+  BASE: TextEdit
+  annotationId: string
+- TextDocumentEdit:
+  textDocument: OptionalTextDocumentIdentifier
+  edits: interface[]
+- Location:
+  uri: string
+  range: Range
+- LocationLink:
+  originSelectionRange: Range?
+  targetUri: string
+  targetRange: Range
+  targetSelectionRange: Range
+- Diagnostic:
+  range: Range
+  severity: int?
+  code: interface?
+  codeDescription: CodeDescription?
+  source: string?
+  message: string
+  tags: int[]
+  relatedInfomation: DiagnosticRelatedInfofomation[]
+  data: interface?
+- DiagnosticRelatedInfofomation:
+  location: Location
+  message: string
+- CodeDescription:
+  href: string
+- Command:
+  title: string
+  command: string
+  arguments: interface[]
